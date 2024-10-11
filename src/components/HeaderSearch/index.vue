@@ -30,7 +30,7 @@
 import { ref, computed, nextTick, onMounted, watch, watchEffect } from "vue";
 import { useRouter } from "vue-router";
 import Fuse from "fuse.js";
-import { getNormalPath } from "@/utils/ruoyi";
+import { getNormalPath } from "@/utils/common";
 import { isHttp } from "@/utils/validate";
 import usePermissionStore from "@/store/modules/permission";
 import { ElSelect } from "element-plus";

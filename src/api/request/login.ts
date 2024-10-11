@@ -5,7 +5,7 @@ import Cookies from "js-cookie";
 import { encrypt, decrypt } from "@/utils/jsencrypt";
 import { ref } from "vue";
 import { ElForm } from "element-plus";
-import { lodashFunc } from "@/utils/ruoyi";
+import { lodashFunc } from "@/utils/common";
 //mport { ILoginForm } from "./module/loginForm";
 
 export default () => {

@@ -79,7 +79,7 @@ export default defineConfig(({ mode }) => {
 			},
 			preprocessorOptions: {
 				scss: {
-					additionalData: '@import "./src/assets/styles/ruoyi.scss";', // 全局公共样式
+					additionalData: '@import "./src/assets/styles/common.scss";', // 全局公共样式
 				},
 			},
 		},

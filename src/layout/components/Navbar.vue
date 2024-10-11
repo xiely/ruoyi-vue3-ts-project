@@ -2,7 +2,7 @@
 	<div class="navbar">
 		<hamburger
 			id="hamburger-container"
-			:is-active="appStore.sidebar.opened"
+			:is-active="Boolean(appStore.sidebar.opened)"
 			class="hamburger-container"
 			@toggleClick="toggleSideBar"
 		/>
@@ -19,34 +19,19 @@
 
 		<div class="right-menu">
 			<template v-if="appStore.device !== 'mobile'">
-                <span style="font-size: 12px;margin-right: 20px;color: #696969;">上次登录：{{ lastLongin }}</span>
-				<header-search id="header-search" class="right-menu-item" />
-				<el-tooltip content="源码地址" effect="dark" placement="bottom">
-					<ruo-yi-git
-						id="ruoyi-git"
-						class="right-menu-item hover-effect"
-					/>
-				</el-tooltip>
-
-				<el-tooltip content="文档地址" effect="dark" placement="bottom">
-					<ruo-yi-doc
-						id="ruoyi-doc"
-						class="right-menu-item hover-effect"
-					/>
-				</el-tooltip>
-
+                <!-- <span style="font-size: 12px;margin-right: 20px;color: #696969;">上次登录：{{ lastLongin }}</span> -->
 				<screenfull
 					id="screenfull"
 					class="right-menu-item hover-effect"
 				/>
 
-				<el-tooltip content="布局大小" effect="dark" placement="bottom">
+				<!-- <el-tooltip content="布局大小" effect="dark" placement="bottom">
 					<size-select
 						id="size-select"
 						class="right-menu-item hover-effect"
                          style="margin-top: 13px"
 					/>
-				</el-tooltip>
+				</el-tooltip> -->
 			</template>
 			<div class="avatar-container">
 				<el-dropdown
@@ -87,8 +72,6 @@ import Hamburger from "@/components/Hamburger/index.vue";
 import Screenfull from "@/components/Screenfull/index.vue";
 import SizeSelect from "@/components/SizeSelect/index.vue";
 import HeaderSearch from "@/components/HeaderSearch/index.vue";
-import RuoYiGit from "@/components/RuoYi/Git/index.vue";
-import RuoYiDoc from "@/components/RuoYi/Doc/index.vue";
 import useAppStore from "@/store/modules/app";
 import useUserStore from "@/store/modules/user";
 import useSettingsStore from "@/store/modules/settings";

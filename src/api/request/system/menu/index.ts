@@ -3,7 +3,7 @@ import { ElForm, ElTable } from "element-plus";
 import { ref, getCurrentInstance, nextTick, onMounted } from "vue";
 // prettier-ignore
 import { addMenu, batchDelMenu, delMenu, getMenu, listMenu, pageList, updateMenu, } from "@/api/system/menu";
-import { lodashFunc } from "@/utils/ruoyi";
+import { lodashFunc } from "@/utils/common";
 
 export default () => {
 	const { proxy } = getCurrentInstance() as any;

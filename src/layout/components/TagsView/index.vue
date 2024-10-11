@@ -67,7 +67,7 @@
 import { ref, computed, nextTick, watch, onMounted, getCurrentInstance, } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import ScrollPane from "./ScrollPane.vue";
-import { getNormalPath } from "@/utils/ruoyi";
+import { getNormalPath } from "@/utils/common";
 import useTagsViewStore from "@/store/modules/tagsView";
 import useSettingsStore from "@/store/modules/settings";
 import usePermissionStore from "@/store/modules/permission";

@@ -2,7 +2,7 @@ import { Directive } from "vue";
 
 /**
  * v-copyText 复制文本内容
- * Copyright (c) 2022 ruoyi
+ * Copyright (c) 2022 common
  */
 export const copyText: Directive = {
 	beforeMount(el, { value, arg }) {

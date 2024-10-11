@@ -5,7 +5,7 @@ import { listRole, getRole, delRole, addRole, updateRole, dataScope, changeRoleS
 import { treeselect as menuTreeselect, roleMenuTreeSelect } from "@/api/system/menu";
 // prettier-ignore
 import { roleDeptTreeselect } from "@/api/system/dept";
-import { addDateRange } from "@/utils/ruoyi";
+import { addDateRange } from "@/utils/common";
 import { ref, getCurrentInstance, nextTick } from "vue";
 import { getDicts } from "@/api/system/dict/data";
 import { ElForm, ElTree } from "element-plus";
@@ -450,13 +450,13 @@ export default () => {
     getDicts("sys_normal_disable").then((response: any) => {
         statusOptions.value = response.data;
     });
-	
+
 	// prettier-ignore
 	return {
         menuRef, loading, exportLoading, deptRef, single, multiple, showSearch, total, roleList, title, open, openDataScope, menuExpand, menuNodeAll,
         deptExpand, deptNodeAll, dateRange, statusOptions, dataScopeOptions, menuOptions, deptOptions, queryParams, form, defaultProps, rules, formRef,
-        queryFormRef, getList, handleStatusChange, handleQuery, resetQuery, handleSelectionChange, handleCheckedTreeExpand,  
+        queryFormRef, getList, handleStatusChange, handleQuery, resetQuery, handleSelectionChange, handleCheckedTreeExpand,
         handleCheckedTreeNodeAll, handleCheckedTreeConnect, handleAdd, handleUpdate, dataScopeSelectChange, handleDataScope, submitForm, cleanSelect,
-        submitDataScope, handleDelete, handleExport, pageTable, checkSelected, 
+        submitDataScope, handleDelete, handleExport, pageTable, checkSelected,
     }
 };

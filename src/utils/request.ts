@@ -3,7 +3,7 @@ import axios, { AxiosResponse } from "axios";
 import { ElNotification, ElMessageBox, ElLoading, ElMessage} from "element-plus";
 import useUserStore from "@/store/modules/user";
 import { getToken } from "@/utils/auth";
-import { tansParams, blobValidate } from "@/utils/ruoyi";
+import { tansParams, blobValidate } from "@/utils/common";
 import errorCode from "@/utils/errorCode";
 import cache from "@/plugins/cache";
 import { saveAs } from "file-saver";

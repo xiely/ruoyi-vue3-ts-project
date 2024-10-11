@@ -1,4 +1,4 @@
-import { parseTime } from "./ruoyi";
+import { parseTime } from "./common";
 
 /**
  * 表格时间格式化
@@ -255,8 +255,9 @@ export const debounce = (func: any, wait: number, immediate: boolean): any => {
 		}
 	};
 
-	return (...args: any) => {
-		context = this;
+	return function (...args: any) {
+		// console.log(this, "TTTTTTTTTTTTT")
+		let context;
 		timestamp = +new Date();
 		const callNow = immediate && !timeout;
 		// 如果延时不存在，重新设定延时

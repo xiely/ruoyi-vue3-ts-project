@@ -1,6 +1,6 @@
 /**
  * 操作权限处理
- * Copyright (c) 2019 ruoyi
+ * Copyright (c) 2019 common
  */
 import { Directive, DirectiveBinding } from "vue";
 import useUserStore from "@/store/modules/user";
@@ -33,7 +33,7 @@ export const hasPermi: Directive = {
 
 /**
  * 角色权限处理
- * Copyright (c) 2019 ruoyi
+ * Copyright (c) 2019 common
  */
 export const hasRole: Directive = {
 	mounted(el: HTMLElement, binding: DirectiveBinding) {

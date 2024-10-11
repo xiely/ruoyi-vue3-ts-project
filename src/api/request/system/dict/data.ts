@@ -1,4 +1,4 @@
-import { setTableRowSelected } from './../../../../utils/ruoyi';
+import { setTableRowSelected } from './../../../../utils/common';
 // prettier-ignore
 import { listData, getData, delData, addData, updateData } from "@/api/system/dict/data";
 import { listType, getDataType } from "@/api/system/dict/type";
@@ -223,8 +223,8 @@ export default () => {
 
 	// prettier-ignore
 	return {
-        loading, single, multiple, showSearch, total, dataList, title, open, statusOptions, typeOptions, dateRange, queryParams, form, formRef, 
-        queryFormRef, rules, pageTableRef, getList, statusFormat, cancel, handleQuery, resetQuery, handleSelectionChange, handleAdd, handleUpdate, 
-        submitForm, handleDelete, handleExport, cleanSelect, 
+        loading, single, multiple, showSearch, total, dataList, title, open, statusOptions, typeOptions, dateRange, queryParams, form, formRef,
+        queryFormRef, rules, pageTableRef, getList, statusFormat, cancel, handleQuery, resetQuery, handleSelectionChange, handleAdd, handleUpdate,
+        submitForm, handleDelete, handleExport, cleanSelect,
     };
 };

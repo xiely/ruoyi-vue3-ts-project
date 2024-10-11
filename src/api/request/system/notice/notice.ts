@@ -1,4 +1,4 @@
-import { setTableRowSelected } from './../../../../utils/ruoyi';
+import { setTableRowSelected } from './../../../../utils/common';
 import { ref, getCurrentInstance, onMounted } from "vue";
 // prettier-ignore
 import { listNotice, getNotice, delNotice, addNotice, updateNotice, } from "@/api/system/notice";
@@ -218,8 +218,8 @@ export default () => {
 
 	// prettier-ignore
 	return {
-        loading, single, multiple, showSearch, total, noticeList, title, open, statusOptions, typeOptions, queryParams, form, formRef, queryFormRef, 
-        rules, getList, statusFormat, typeFormat, cancel, handleQuery, resetQuery, handleSelectionChange, handleAdd, handleUpdate, submitForm, 
-        handleDelete, pageTable, cleanSelect, 
+        loading, single, multiple, showSearch, total, noticeList, title, open, statusOptions, typeOptions, queryParams, form, formRef, queryFormRef,
+        rules, getList, statusFormat, typeFormat, cancel, handleQuery, resetQuery, handleSelectionChange, handleAdd, handleUpdate, submitForm,
+        handleDelete, pageTable, cleanSelect,
     }
 };

@@ -32,7 +32,7 @@ import hljsVuePlugin from "@highlightjs/vue-plugin";
 // element-plus
 import ElementPlus from "element-plus";
 import "element-plus/theme-chalk/index.css";
-// import locale from "element-plus/es/locale/lang/zh-cn";
+import locale from "element-plus/es/locale/lang/zh-cn";
 // element-plus icons
 //import * as ElementPlusIconsVue from "@element-plus/icons-vue";
 
@@ -60,7 +60,7 @@ import "./permission"; // permission control
 
 import useDict from "@/utils/dict";
 // prettier-ignore
-import { parseTime, dateTimeSub, resetForm, cleanTableSelection, setTableRowSelected, addDateRange, selectDictLabel, selectDictLabels, handleTree } from "@/utils/ruoyi";
+import { parseTime, dateTimeSub, resetForm, cleanTableSelection, setTableRowSelected, addDateRange, selectDictLabel, selectDictLabels, handleTree } from "@/utils/common";
 
 // 分页组件
 import Pagination from "@/components/Pagination/index.vue";
@@ -152,9 +152,9 @@ app.component("svg-icon", SvgIcon);
 
 // 使用element-plus，设置默认语言及全局size
 app.use(ElementPlus, {
-	// locale: locale,
+	locale: locale,
 	// 支持 large、default、small
-	// size: Cookies.get("size") || "default",
+	size: Cookies.get("size") || "default",
 });
 
 // 注册pinia，router等
