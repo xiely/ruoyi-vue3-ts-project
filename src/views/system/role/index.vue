@@ -122,16 +122,16 @@
             <!-- prettier-ignore -->
 			<el-table-column type="selection" width="55" align="center" :selectable="checkSelected"/>
             <!-- prettier-ignore -->
-			<el-table-column label="角色编号" prop="roleId" width="150" />
+			<el-table-column label="角色编号" prop="roleId"  />
             <!-- prettier-ignore -->
 			<el-table-column label="角色名称" prop="roleName" :show-overflow-tooltip="true" />
             <!-- prettier-ignore -->
-			<el-table-column label="权限字符" prop="roleKey" :show-overflow-tooltip="true" width="200" />
+			<el-table-column label="权限字符" prop="roleKey" :show-overflow-tooltip="true"  />
             <!-- prettier-ignore -->
-			<el-table-column label="显示顺序" prop="roleSort" width="200" />
+			<el-table-column label="显示顺序" prop="roleSort"  />
             <!-- prettier-ignore -->
-			<el-table-column label="备注信息" prop="remark" width="300" />
-			<el-table-column label="状态" align="center" width="200">
+			<el-table-column label="备注信息" prop="remark" />
+			<el-table-column label="状态" align="center" >
 				<template #default="scope">
 					<!--默认active颜色#1890FF -->
                     <!-- prettier-ignore -->
@@ -141,12 +141,12 @@
 				</template>
 			</el-table-column>
             <!-- prettier-ignore -->
-			<el-table-column label="创建时间" align="center" prop="createTime" width="200">
+			<el-table-column label="创建时间" align="center" prop="createTime" >
 				<template #default="scope">
 					<span>{{ dateTimeSub(scope.row.createTime) }}</span>
 				</template>
 			</el-table-column>
-            <el-table-column label="修改时间" align="center" prop="updateTime" width="200">
+            <el-table-column label="修改时间" align="center" prop="updateTime" >
 				<template #default="scope">
 					<span>{{ dateTimeSub(scope.row.updateTime) }}</span>
 				</template>
