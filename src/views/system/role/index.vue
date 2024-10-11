@@ -135,7 +135,7 @@
 				<template #default="scope">
 					<!--默认active颜色#1890FF -->
                     <!-- prettier-ignore -->
-					<status-switch v-if="scope.row.roleId !== '1'" :status-data.sync="scope.row.status" @handleChange="handleStatusChange(scope.row)" />
+					<status-switch v-if="scope.row.roleId !== 1" :status-data.sync="scope.row.status" @handleChange="handleStatusChange(scope.row)" />
                     <!-- prettier-ignore -->
                     <status-switch v-else :status-data.sync="scope.row.status" :disabled="true"/>
 				</template>
@@ -159,7 +159,7 @@
 			>
 				<template #default="scope">
 					<el-link
-                        v-if="scope.row.roleId !== '1'"
+                        v-if="scope.row.roleId !== 1"
 						class="el-link-spacing"
 						:underline="false"
 						size="small"
@@ -170,7 +170,7 @@
 						><span class="table_link_text">修改</span></el-link
 					>
 					<el-link
-                        v-if="scope.row.roleId !== '1'"
+                        v-if="scope.row.roleId !== 1"
 						class="el-link-spacing"
 						:underline="false"
 						size="small"
@@ -181,7 +181,7 @@
 						><span class="table_link_text">数据权限</span></el-link
 					>
 					<el-link
-                        v-if="scope.row.roleId !== '1'"
+                        v-if="scope.row.roleId !== 1"
 						class="el-link-spacing"
 						:underline="false"
 						size="small"
@@ -286,7 +286,7 @@
 								node-key="id"
 								:check-strictly="!form.menuCheckStrictly"
 								empty-text="加载中，请稍后"
-								:props="defaultProps"
+							 :props="{ label: 'label', children: 'children' }"
 							/>
 						</el-form-item>
 					</el-col>
@@ -384,8 +384,8 @@ import Role from "@/api/request/system/role/role";
 // prettier-ignore
 const {
         menuRef, loading, exportLoading, deptRef, single, multiple, showSearch, total, roleList, title, open, openDataScope, menuExpand, menuNodeAll,
-        deptExpand, deptNodeAll, dateRange, statusOptions, dataScopeOptions, menuOptions, deptOptions, queryParams, form, defaultProps, rules, formRef, 
-        queryFormRef, getList, handleStatusChange, handleQuery, resetQuery, handleSelectionChange, handleCheckedTreeExpand, 
+        deptExpand, deptNodeAll, dateRange, statusOptions, dataScopeOptions, menuOptions, deptOptions, queryParams, form, defaultProps, rules, formRef,
+        queryFormRef, getList, handleStatusChange, handleQuery, resetQuery, handleSelectionChange, handleCheckedTreeExpand,
         handleCheckedTreeNodeAll, handleCheckedTreeConnect, handleAdd, handleUpdate, dataScopeSelectChange, handleDataScope, submitForm, cleanSelect,
         submitDataScope, handleDelete, handleExport, pageTable, checkSelected
     } = Role();

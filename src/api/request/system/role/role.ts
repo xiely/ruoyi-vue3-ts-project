@@ -163,7 +163,7 @@ export default () => {
 	const getRoleMenuTreeselect = (roleId: string) => {
 		return roleMenuTreeSelect(roleId).then((response: any) => {
 			if (response.code === 200) {
-				menuOptions.value = response.data.menus;
+				menuOptions.value = response.menus;
 				return response;
 			}
 		});
@@ -317,9 +317,9 @@ export default () => {
 				open.value = true;
 				nextTick(() => {
 					getRoleMenuTreeselect(roleId).then(
-						(res: { code: number; data: { checkedKeys: any } }) => {
+						(res: { code: number;  checkedKeys: any  }) => {
 							if (res.code === 200) {
-								const checkedKeys = res.data.checkedKeys;
+								const checkedKeys = res.checkedKeys;
 								checkedKeys.forEach((v: any) => {
 									nextTick(() => {
 										// prettier-ignore

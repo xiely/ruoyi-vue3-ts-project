@@ -61,7 +61,7 @@ export const treeselect = async () => {
  */
 export const roleMenuTreeSelect = async (roleId: string) => {
 	return await request({
-		url: "/system/menu/roleMenuTreeSelect/" + roleId,
+		url: "/system/menu/roleMenuTreeselect/" + roleId,
 		method: "get",
 	});
 };
