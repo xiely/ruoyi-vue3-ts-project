@@ -72,7 +72,47 @@
 				<el-color-picker
 					v-model="theme"
 					:predefine="predefineColors"
-					@change="themeChange"
+					@change="(val) => {colorChange(val, 'theme')}"
+				/>
+			</span>
+		</div>
+		<div class="drawer-item">
+			<span>信息色</span>
+			<span class="comp-style">
+				<el-color-picker
+					v-model="info"
+					:predefine="predefineColors"
+					@change="(val) => {colorChange(val, 'info')}"
+				/>
+			</span>
+		</div>
+		<div class="drawer-item">
+			<span>成功色</span>
+			<span class="comp-style">
+				<el-color-picker
+					v-model="success"
+					:predefine="predefineColors"
+					@change="(val) => {colorChange(val, 'success')}"
+				/>
+			</span>
+		</div>
+		<div class="drawer-item">
+			<span>警告色</span>
+			<span class="comp-style">
+				<el-color-picker
+					v-model="warning"
+					:predefine="predefineColors"
+					@change="(val) => {colorChange(val, 'warning')}"
+				/>
+			</span>
+		</div>
+		<div class="drawer-item">
+			<span>错误色</span>
+			<span class="comp-style">
+				<el-color-picker
+					v-model="danger"
+					:predefine="predefineColors"
+					@change="(val) => {colorChange(val, 'danger')}"
 				/>
 			</span>
 		</div>
@@ -140,6 +180,10 @@ const settingsStore = useSettingsStore();
 const permissionStore = usePermissionStore();
 const showSettings = ref(false);
 const theme = ref(settingsStore.theme);
+const info = ref(settingsStore.info);
+const success = ref(settingsStore.success);
+const warning = ref(settingsStore.warning);
+const danger = ref(settingsStore.danger);
 const sideTheme = ref(settingsStore.sideTheme);
 const storeSettings = computed(() => settingsStore);
 const predefineColors = ref([
@@ -195,10 +239,35 @@ const dynamicTitle = computed({
 	},
 });
 
-function themeChange(val) {
-	settingsStore.changeSetting({ key: "theme", value: val });
-	handleThemeStyle(val);
-	theme.value = val;
+// function themeChange(val) {
+// 	settingsStore.changeSetting({ key: "theme", value: val });
+// 	handleThemeStyle('primary',val);
+// 	theme.value = val;
+// }
+function colorChange(val, type) {
+	settingsStore.changeSetting({ key: type, value: val });
+	if (type == "theme") {
+		handleThemeStyle("primary", val)
+	}
+	else {
+		handleThemeStyle(type, val)
+	}
+	if (type == "theme") {
+		theme.value = val
+	}
+	else if (type == "info") {
+		info.value = val
+	}
+	else if (type == "success") {
+		success.value = val
+	}
+	else if (type == "warning") {
+		warning.value = val
+	}
+	else if (type == "danger") {
+		danger.value = val
+	}
+
 }
 function handleTheme(val) {
 	settingsStore.changeSetting({ key: "sideTheme", value: val });

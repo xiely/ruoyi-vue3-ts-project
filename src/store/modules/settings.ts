@@ -12,6 +12,10 @@ const useSettingsStore = defineStore("settings", {
 	state: () => ({
 		title: "",
 		theme: "#409EFF",
+		info: "#909399",
+		success: "#67c23a",
+		warning: "#e6a23c",
+		danger: "#f56c6c",
 		// prettier-ignore
 		sideTheme: storageSetting.sideTheme || sideTheme,
 		showSettings: showSettings,
