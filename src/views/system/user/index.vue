@@ -191,13 +191,11 @@
 				>
 					<el-table-column
 						type="selection"
-						width="50"
 						align="center"
 						:selectable="checkSelected"
 					/>
 					<el-table-column
 						label="编号"
-						width="70"
 						align="center"
 						key="userId"
 						prop="userId"
@@ -205,7 +203,6 @@
 					/>
 					<el-table-column
 						label="名称"
-						width="150"
 						align="center"
 						key="userName"
 						prop="userName"
@@ -214,7 +211,6 @@
 					/>
 					<el-table-column
 						label="性别"
-						width="100"
 						align="center"
 						key="sex"
 						prop="sex"
@@ -229,7 +225,6 @@
 					</el-table-column>
 					<el-table-column
 						label="昵称"
-						width="150"
 						align="center"
 						key="nickName"
 						prop="nickName"
@@ -244,14 +239,13 @@
 						v-if="columns[3].visible"
 						:show-overflow-tooltip="true"
 					/>
-					<el-table-column
+					<!-- <el-table-column
 						label="岗位"
 						align="center"
 						prop="postNameArray"
 						:show-overflow-tooltip="true"
 					>
 						<template #default="scope">
-							<!-- prettier-ignore -->
 							<data-tag v-model:roles-array="scope.row.postNameArray"/>
 						</template>
 					</el-table-column>
@@ -261,13 +255,11 @@
 						prop="roleNameArray"
 					>
 						<template #default="scope">
-							<!-- prettier-ignore -->
 							<data-tag v-model:roles-array="scope.row.roleNameArray"/>
 						</template>
-					</el-table-column>
+					</el-table-column> -->
 					<el-table-column
 						label="手机号码"
-						width="120"
 						align="center"
 						key="phonenumber"
 						prop="phonenumber"
@@ -275,14 +267,12 @@
 					/>
 					<el-table-column
 						label="邮箱"
-						width="200"
 						align="center"
 						key="email"
 						prop="email"
 					/>
 					<el-table-column
 						label="状态"
-						width="100"
 						align="center"
 						key="status"
 						v-if="columns[5].visible"
@@ -317,8 +307,8 @@
 						label="创建时间"
 						align="center"
 						prop="createTime"
+						width="180"
 						v-if="columns[6].visible"
-						width="160"
 					>
 						<template #default="scope">
 							<span>{{ parseTime(scope.row.createTime) }}</span>
@@ -326,7 +316,7 @@
 					</el-table-column>
 					<el-table-column
 						label="操作"
-						width="200"
+						width="280"
 						align="center"
 						class-name="small-padding fixed-width"
 					>
@@ -370,6 +360,15 @@
 									>删除</span
 								></el-link
 							>
+
+                        <el-link class="table_link_btn"
+								:underline="false"
+								:disabled="scope.row.userId === '1'"
+								size="small" type="primary" icon="CircleCheck" @click="handleAuthRole(scope.row)" v-hasPermi="['system:user:edit']">
+							<span class="table_link_text"
+									>分配角色</span
+								>
+						</el-link>
 						</template>
 					</el-table-column>
 				</el-table>
@@ -600,10 +599,10 @@
 import User from "@/api/request/system/user";
 // prettier-ignore
 const {
-        loading, queryFormRef, formRef, sys_normal_disable, deptTreeRef, single, multiple, showSearch, total, userList, title, deptOptions, open, 
+        loading, queryFormRef, formRef, sys_normal_disable, deptTreeRef, single, multiple, showSearch, total, userList, title, deptOptions, open,
         deptName, dateRange, sys_user_sex, postOptions, roleOptions, form, defaultProps, upload, queryParams, columns, rules, pageTableRef, uploadRef,
         getPageList, filterNode, handleNodeClick, handleStatusChange, cancel, handleQuery, resetQuery, handleSelectionChange, statusChange,
-        handleAdd, handleUpdate, handleResetPwd, submitForm, handleDelete, handleExport, handleImport, importTemplate, handleFileUploadProgress, 
+        handleAdd, handleUpdate, handleResetPwd, submitForm, handleDelete,handleAuthRole, handleExport, handleImport, importTemplate, handleFileUploadProgress,
         handleFileSuccess, submitFileForm, checkSelected, cleanSelect, cleanUploadRef
     } = User();
 </script>

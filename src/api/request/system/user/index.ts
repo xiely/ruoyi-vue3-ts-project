@@ -177,7 +177,7 @@ export default () => {
 
 	/**
      * 用户状态修改
-     * 
+     *
      * @param val 当前选中的值
      * @param row 当前的行数据
      */
@@ -194,7 +194,7 @@ export default () => {
                 row.status = row.status === "0" ? "1" : "0";
                 return;
             });
-        //updateUserStatus(row.userId, val);   
+        //updateUserStatus(row.userId, val);
 	};
 	// 取消按钮
 	const cancel = () => {
@@ -250,8 +250,8 @@ export default () => {
 		if (userId) {
 			getUser(userId).then((response: any) => {
 				if (response.code === 200) {
-					const data = response.data;
-                    form.value = response.data.data;
+					const data = response;
+                    form.value = data.data;
 					postOptions.value = data.posts;
 					roleOptions.value = data.roles;
                     form.value.postIds = data.postIds;
@@ -290,7 +290,7 @@ export default () => {
 	const handleAdd = () => {
 		reset();
 		getTreeselect();
-	
+
 		getUserBaseInfo("添加用户", null);
 	};
 	/** 修改按钮操作 */
@@ -320,6 +320,12 @@ export default () => {
                 console.log("密码重置取消");
             });
 	};
+
+	const handleAuthRole = (row: any) => {
+		proxy.$router.push({
+			path:`/system/user-auth/role/${row.userId}`
+		})
+	}
 	/** 提交按钮 */
 	const submitForm = () => {
 		formRef.value?.validate((valid: boolean) => {
@@ -455,10 +461,10 @@ export default () => {
 
 	// prettier-ignore
 	return {
-        loading, queryFormRef, formRef, sys_normal_disable, deptTreeRef, single, multiple, showSearch, total, userList, title, deptOptions, open, 
+        loading, queryFormRef, formRef, sys_normal_disable, deptTreeRef, single, multiple, showSearch, total, userList, title, deptOptions, open,
         deptName, dateRange, sys_user_sex, postOptions, roleOptions, form, defaultProps, upload, queryParams, columns, rules, pageTableRef, uploadRef,
         getPageList, filterNode, handleNodeClick, handleStatusChange,  cancel, handleQuery, resetQuery, handleSelectionChange, statusChange,
-        handleAdd, handleUpdate, handleResetPwd, submitForm, handleDelete, handleExport, handleImport, importTemplate, handleFileUploadProgress, 
+        handleAdd, handleUpdate, handleResetPwd,handleAuthRole, submitForm, handleDelete, handleExport, handleImport, importTemplate, handleFileUploadProgress,
         handleFileSuccess, submitFileForm, checkSelected, cleanSelect, cleanUploadRef
     };
 };

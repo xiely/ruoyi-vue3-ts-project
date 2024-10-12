@@ -49,7 +49,7 @@
 								<el-dropdown-item>个人中心</el-dropdown-item>
 							</router-link>
 							<el-dropdown-item command="setLayout">
-								<span>布局设置</span>
+								<span id="theme">布局设置</span>
 							</el-dropdown-item>
 							<el-dropdown-item divided command="logout">
 								<span>退出登录</span>
@@ -132,7 +132,7 @@ onMounted(() => {
 });
 
 watch(() => router.currentRoute.value.path,(newValue, oldValue) => {
-        console.log("路由变化", newValue, "刷新距离上次登录时间");
+        // console.log("路由变化", newValue, "刷新距离上次登录时间");
         // lastLoginTime()
     },
     { immediate: true } // 初始化之后立即调用。

@@ -174,6 +174,16 @@
 						class="el-link-spacing"
 						:underline="false"
 						size="small"
+						type="danger"
+						icon="delete"
+						@click="handleDelete(scope.row)"
+						v-hasPermi="['system:role:remove']"
+						><span class="table_link_text">删除</span></el-link>
+					<el-link
+                        v-if="scope.row.roleId !== 1"
+						class="el-link-spacing"
+						:underline="false"
+						size="small"
 						type="primary"
 						icon="circle-check"
 						@click="handleDataScope(scope.row)"
@@ -181,16 +191,15 @@
 						><span class="table_link_text">数据权限</span></el-link
 					>
 					<el-link
-                        v-if="scope.row.roleId !== 1"
+						v-if="scope.row.roleId !== 1"
+						type="primary" icon="User"
 						class="el-link-spacing"
 						:underline="false"
 						size="small"
-						type="danger"
-						icon="delete"
-						@click="handleDelete(scope.row)"
-						v-hasPermi="['system:role:remove']"
-						><span class="table_link_text">删除</span></el-link
-					>
+						@click="handleAuthUser(scope.row)"
+						v-hasPermi="['system:role:edit']">
+						<span class="table_link_text">分配用户</span>
+					</el-link>
 				</template>
 			</el-table-column>
 		</el-table>
@@ -386,7 +395,7 @@ const {
         menuRef, loading, exportLoading, deptRef, single, multiple, showSearch, total, roleList, title, open, openDataScope, menuExpand, menuNodeAll,
         deptExpand, deptNodeAll, dateRange, statusOptions, dataScopeOptions, menuOptions, deptOptions, queryParams, form, defaultProps, rules, formRef,
         queryFormRef, getList, handleStatusChange, handleQuery, resetQuery, handleSelectionChange, handleCheckedTreeExpand,
-        handleCheckedTreeNodeAll, handleCheckedTreeConnect, handleAdd, handleUpdate, dataScopeSelectChange, handleDataScope, submitForm, cleanSelect,
+        handleCheckedTreeNodeAll, handleCheckedTreeConnect, handleAdd, handleUpdate, dataScopeSelectChange, handleDataScope,  handleAuthUser,submitForm, cleanSelect,
         submitDataScope, handleDelete, handleExport, pageTable, checkSelected
     } = Role();
 </script>

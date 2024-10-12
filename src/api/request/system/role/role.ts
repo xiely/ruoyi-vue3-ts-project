@@ -364,6 +364,11 @@ export default () => {
 			}
 		});
 	};
+
+	const handleAuthUser = (row: any) => {
+		proxy.$router.push({ path: `/system/role-auth/user/${row.roleId}` });
+
+	}
 	/** 提交按钮 */
 	const submitForm = () => {
 		formRef.value?.validate((valid: boolean) => {
@@ -456,7 +461,7 @@ export default () => {
         menuRef, loading, exportLoading, deptRef, single, multiple, showSearch, total, roleList, title, open, openDataScope, menuExpand, menuNodeAll,
         deptExpand, deptNodeAll, dateRange, statusOptions, dataScopeOptions, menuOptions, deptOptions, queryParams, form, defaultProps, rules, formRef,
         queryFormRef, getList, handleStatusChange, handleQuery, resetQuery, handleSelectionChange, handleCheckedTreeExpand,
-        handleCheckedTreeNodeAll, handleCheckedTreeConnect, handleAdd, handleUpdate, dataScopeSelectChange, handleDataScope, submitForm, cleanSelect,
+        handleCheckedTreeNodeAll, handleCheckedTreeConnect, handleAdd, handleUpdate, dataScopeSelectChange, handleDataScope,handleAuthUser, submitForm, cleanSelect,
         submitDataScope, handleDelete, handleExport, pageTable, checkSelected,
     }
 };
