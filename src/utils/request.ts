@@ -12,11 +12,11 @@ import { nanoid } from "nanoid";
 const userAgent = navigator.userAgent;
 // prettier-ignore
 var isIE11 = userAgent.indexOf('Trident') > -1 && userAgent.indexOf('rv:11.0') > -1;
-console.log("是否是IE11", isIE11);
+// console.log("是否是IE11", isIE11);
 
 // prettier-ignore
 var isLessIE11 = userAgent.indexOf('compatible') > -1 && userAgent.indexOf('MSIE') > -1;
-console.log("是否是小于IE11", isLessIE11);
+// console.log("是否是小于IE11", isLessIE11);
 
 // prettier-ignore
 axios.defaults.headers["Content-Type"] = "application/json;charset=utf-8";
