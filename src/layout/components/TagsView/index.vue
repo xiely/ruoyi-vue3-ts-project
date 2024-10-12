@@ -172,6 +172,10 @@ function addTags() {
 	const { name } = route;
 	if (name) {
 		useTagsViewStore().addView(route);
+		if (route.meta.link) {
+      			useTagsViewStore().addIframeView(route);
+			
+    		}
 	}
 	return false;
 }
@@ -189,7 +193,10 @@ function moveToCurrentTag() {
 	});
 }
 function refreshSelectedTag(view) {
-	proxy.$tab.refreshPage(view);
+  proxy.$tab.refreshPage(view);
+  if (route.meta.link) {
+    useTagsViewStore().delIframeView(route);
+  }
 }
 function closeSelectedTag(view) {
 	proxy.$tab.closePage(view).then(({ visitedViews }) => {

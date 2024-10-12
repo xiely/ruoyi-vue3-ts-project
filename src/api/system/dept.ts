@@ -2,7 +2,7 @@ import request from "@/utils/request";
 
 /**
  * 查询部门列表
- * 
+ *
  * @param {object} query 查询参数Obj
  * @returns
  */
@@ -16,7 +16,7 @@ export const listDept = async (query?: any) => {
 
 /**
  * 查询部门分页列表
- * 
+ *
  * @param {object} query 查询参数Obj
  * @returns
  */
@@ -30,7 +30,7 @@ export const listDept = async (query?: any) => {
 
 /**
  * 查询部门列表（排除节点
- * 
+ *
  * @param {string} deptId 部门ID
  * @returns
  */
@@ -43,7 +43,7 @@ export const listDeptExcludeChild = async (deptId: string) => {
 
 /**
  * 查询部门详细
- * 
+ *
  * @param {string} deptId 部门ID
  * @returns
  */
@@ -61,7 +61,7 @@ export const getDept = async (deptId: string) => {
  */
 export const treeselect = async () => {
 	return await request({
-		url: "/system/dept/treeselect",
+		url: "/system/user/deptTree",
 		method: "get",
 	});
 };

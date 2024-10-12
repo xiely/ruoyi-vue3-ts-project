@@ -7,8 +7,6 @@ import router from "@/router";
 import { createPinia } from "pinia";
 import Cookies from "js-cookie";
 
-import "highlight.js/lib/common";
-import hljsVuePlugin from "@highlightjs/vue-plugin";
 
 // TODO 这里引入hljs与注册语言是为了防止打包后缺失样式(放开javascript的注释)，开发环境不需要
 // import hljs from 'highlight.js/lib/core';
@@ -162,7 +160,6 @@ app.use(createPinia());
 app.use(router);
 app.use(plugins);
 app.use(elementIcons);
-app.use(hljsVuePlugin);
 app.use(VueCropper);
 
 app.mount("#app");
