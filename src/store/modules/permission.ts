@@ -5,6 +5,7 @@ import { getRouters } from "@/api/system/menu";
 import Layout from "@/layout/index.vue";
 import ParentView from "@/components/ParentView/index.vue";
 import InnerLink from "@/layout/components/InnerLink/index.vue";
+import { DATA } from "./routerData"
 
 // 匹配views里面所有的.vue文件
 const modules = import.meta.glob("./../../views/**/*.vue");
@@ -36,7 +37,8 @@ const usePermissionStore = defineStore("permission", {
 				// 向后端请求路由数据
 				getRouters().then((res: any) => {
                     if (res.code === 200) {
-                        const data = res.data;
+                        // const data = res.data;
+						const data = DATA.data;
                         const sdata = JSON.parse(JSON.stringify(data));
                         const rdata = JSON.parse(JSON.stringify(data));
                         const defaultData = JSON.parse(JSON.stringify(data));

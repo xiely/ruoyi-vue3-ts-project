@@ -1,35 +1,8 @@
 <template>
 	<div class="app-container">
 		<el-row :gutter="20">
-			<!--部门数据-->
-			<el-col :span="4" :xs="24" style="margin-top: 3px">
-				<div class="head-container">
-					<!-- prettier-ignore -->
-					<label for="deptName" style="font-size: 13px;">部门名称：</label>
-					<el-input
-						id="deptName"
-						v-model="deptName"
-						placeholder="请输入部门名称"
-						clearable
-						size="small"
-						prefix-icon="search"
-						style="margin-bottom: 10px; width: 70%"
-					/>
-				</div>
-				<div class="head-container">
-					<el-tree
-						ref="deptTreeRef"
-						:data="deptOptions"
-						:props="defaultProps"
-						:expand-on-click-node="false"
-						:filter-node-method="filterNode"
-						default-expand-all
-						@node-click="handleNodeClick"
-					/>
-				</div>
-			</el-col>
 			<!--用户数据-->
-			<el-col :span="20" :xs="24">
+			<el-col :span="24" :xs="24">
 				<transition name="fade">
 					<el-form
 						:model="queryParams"
