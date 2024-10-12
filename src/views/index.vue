@@ -1,23 +1,29 @@
 <template>
   <div class="app-container home">
-    <el-row :gutter="20">
-      <div ref="welcome">欢迎</div>
-    </el-row>
-
 	<el-container style="height: 100vh; border: 1px solid #eee">
-      <el-aside width="200px">
+      <el-aside width="300px">
         <el-menu>
           <div class="search-input">
-            <el-input
+            <!-- <el-input
               @keydown.enter="fuzzyRetrieval"
               clearable
-              size="small"
+			  style="width:100%"
               v-model="searhKey"
               placeholder="请输入关键字"
             ></el-input>
             <el-button class="serachButton" size="small" @click="fuzzyRetrieval"
               ><i class="el-icon-search"></i
-            ></el-button>
+            ></el-button> -->
+
+			<el-input
+				v-model="searhKey"
+				placeholder="请输入关键字"
+				class="input-with-select"
+				>
+				<template #append>
+					<el-button icon="Search" @click="fuzzyRetrieval"/>
+				</template>
+				</el-input>
           </div>
 
           <el-menu-item-group v-if="cameraList.length" style="margin-top: 20px">
@@ -44,29 +50,27 @@
       <el-container>
         <el-header>
           <div>
-            <el-button type="primary" plain>停止所有预览</el-button>
-            <el-button type="primary" plain>停止所有回放</el-button>
+            <el-button type="primary" plain @click="stopAllPreview()">停止所有预览</el-button>
+            <el-button type="primary" plain @click="stopAllPlayBack()">停止所有回放</el-button>
           </div>
           <div>
 			<el-radio-group v-model="radioType" @change="changeVideoType" style="margin-right:10px;vertical-align: middle;">
 				<el-radio-button label="实时预览" value="0" />
 				<el-radio-button label="录像回放" value="1" />
 			</el-radio-group>
-            <el-date-picker
-			  style="vertical-align: middle;"
-              v-model="playbackTime"
-              type="datetimerange"
-              range-separator="至"
-              start-placeholder="开始日期"
-              end-placeholder="结束日期"
-              :unlink-panels="false"
-              value-format="timestamp"
-              :disabled="radioType === '0'"
-              @focus="focusEvent"
-              @blur="blurEvent"
-              @change="videoDetails(cameraIndexCode)"
-            >
-            </el-date-picker>
+			<el-date-picker
+			style="z-index: 99999;"
+			v-model="playbackTime"
+			type="datetimerange"
+			range-separator="至"
+			start-placeholder="开始日期"
+			end-placeholder="结束日期"
+			:disabled="radioType === '0'"
+			@focus="focusEvent"
+            @blur="blurEvent"
+            @change="videoDetails(cameraIndexCode)"
+
+			/>
           </div>
         </el-header>
 
@@ -117,12 +121,14 @@ let cameraList_standby = reactive([]);
 const radioType = ref("0");
 //搜索框绑定的值
 const searhKey = ref("");      //日期输入框
-const playbackTime = reactive([]);
+const playbackTime = ref([]);
 //当前用户点击的 监控点编号
 const cameraIndexCode = ref("");      //视频窗口初始的固定宽度
 const idWidth = ref(0);      //视频窗口初始的固定高度
 const idHeight = ref("");
 const videoHome: any = ref(null);
+const value1 = ref([
+])
 let initCount = 0;
 let pubKey = "";
 let oWebControl: any = null; //webc插件的实例对象
@@ -144,7 +150,7 @@ const driverObj = driver({
 	allowClose: true,
 	onDestroyed: () => {
 		isDrive.value = true
-		sessionStorage.set('todo-driver', true)
+		sessionStorage.setItem('todo-driver', 'true')
 	},
 
 	steps: [
@@ -225,6 +231,15 @@ onMounted(() => {
 	//查询监控列表
 	// getCamerasList();
 })
+
+function dateFocus() {
+	oWebControl.JS_HideWnd();
+	console.log("dateFocus")
+}
+
+function visibleChange() {
+	console.log("visibleChange")
+}
 
 /**
 	 * 分页查询查询的监控列表
@@ -353,7 +368,7 @@ function init() {
  * 监控视频实时预览
  * @param {String} cameraIndexCode 监控站点的编号
  */
-function video_Preview(cameraIndexCode: string) {
+function videoPreview(cameraIndexCode: string) {
 	oWebControl.JS_RequestInterface({
 		funcName: "startPreview",
 		argument: JSON.stringify({
@@ -421,20 +436,22 @@ function cbIntegrationCallBack() {
  * @param {*} cameraIndexCode 当前点击的监控列表的唯一值，用于接口传参
  */
 function videoDetails(cameraIndexCode: string) {
-	return;
 	if (radioType.value === "0") {
-		video_Preview(cameraIndexCode);
+		videoPreview(cameraIndexCode);
 	} else {
 		// 判断是否填写了回放时间
-
-		if (!playbackTime.length) {
+		if (!playbackTime.value.length) {
 			proxy.$message.warning("请选择回放时间");
 			return;
 		}
+		const startDate = new Date(playbackTime.value[0])
+		const startTimeStamp = startDate.getTime();
+		const endDate = new Date(playbackTime.value[1])
+		const endTimeStamp = endDate.getTime();
 		video_Playback(
 			cameraIndexCode,
-			Number(playbackTime[0]) / 1000,
-			Number(playbackTime[1]) / 1000
+			Number(startTimeStamp) / 1000,
+			Number(endTimeStamp) / 1000
 		);
 	}
 }
@@ -468,13 +485,14 @@ function blurEvent() {
  */
 function changeVideoType() {
 	console.log("AAAAAAAAAAAAAAAAAA")
+
 	// 先销毁 在创建,如果不这么做，只是单纯调用this.init()方法修改里面的预览和回放的参数值是行不通的
 	oWebControl.JS_Disconnect().then(() => {
 		initPlugin();
 	});
 }
 /**
- * 监听浏览器窗口变化，以及关闭标签页变，并对插件做出处理
+ * 监听浏览器窗口变化，以及关闭标签页变化，并对插件做出处理
  */
 function monitoringWindow() {
 	// 标签关闭
@@ -496,6 +514,23 @@ function monitoringWindow() {
 	// 		}
 	// 	});
 	// });
+}
+
+// 停止全部预览
+function stopAllPreview() {
+	console.log("stopAllPreview")
+	oWebControl.JS_RequestInterface({
+		funcName: "stopAllPreview"
+	});
+}
+
+// 停止所有回放
+function stopAllPlayBack() {
+	console.log("stopAllPlayBack")
+	oWebControl.JS_RequestInterface({
+		funcName: "stopAllPlayback"
+	});
+
 }
 </script>
 
@@ -572,6 +607,7 @@ function monitoringWindow() {
 #video_home {
 	width: 100%;
 	height: 92vh;
+	border: 1px solid red;
 }
 
 .cameraName-list {
@@ -605,12 +641,15 @@ function monitoringWindow() {
 }
 
 .search-input {
-	width: 180px;
-	display: flex;
-	align-items: center;
-	position: fixed;
-	z-index: 99;
-	box-shadow: 0px 5px 5px #d6d2d2;
+	width: 100%;
+	margin: 0px auto;
+	padding: 10px;
+	// display: flex;
+	// align-items: center;
+	// justify-content: center;
+	// position: fixed;
+	// z-index: 99;
+	// box-shadow: 0px 5px 5px #d6d2d2;
 }
 
 .serachButton {
