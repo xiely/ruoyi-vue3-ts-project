@@ -204,14 +204,14 @@
 						v-if="columns[2].visible"
 						:show-overflow-tooltip="true"
 					/>
-					<el-table-column
+					<!-- <el-table-column
 						label="部门"
 						align="center"
 						key="deptName"
 						prop="dept.deptName"
 						v-if="columns[3].visible"
 						:show-overflow-tooltip="true"
-					/>
+					/> -->
 					<!-- <el-table-column
 						label="岗位"
 						align="center"
@@ -369,7 +369,7 @@
 							/>
 						</el-form-item>
 					</el-col>
-					<el-col :span="12">
+					<!-- <el-col :span="12">
 						<el-form-item label="归属部门" prop="deptId">
 							<el-tree-select
                                 check-strictly
@@ -381,7 +381,7 @@
 								placeholder="请选择归属部门"
 							/>
 						</el-form-item>
-					</el-col>
+					</el-col> -->
 				</el-row>
 				<el-row>
 					<el-col :span="12">

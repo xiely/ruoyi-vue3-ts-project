@@ -6,7 +6,7 @@
 			:rules="registerRules"
 			class="register-form"
 		>
-			<h3 class="title">后台管理系统</h3>
+			<h3 class="title">硫酸灌车自动取样管理系统</h3>
 			<el-form-item prop="username">
 				<el-input
 					v-model="registerForm.username"

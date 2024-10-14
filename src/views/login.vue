@@ -7,7 +7,7 @@
                 :rules="loginRules"
                 class="login-form"
             >
-                <h3 class="title">后台管理系统</h3>
+                <h3 class="title">硫酸灌车自动取样管理系统</h3>
                 <el-form-item prop="username">
                     <el-input
                         v-model="loginForm.username"
@@ -95,12 +95,14 @@ const {
 
 <style lang="scss" scoped>
 .login {
+	padding-left: 80vh;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	height: 100%;
-	background-image: url("../assets/images/login-background.jpg");
-	background-size: cover;
+	// background-image: url("../assets/images/login-background.jpg");
+	background-image: url("../assets/images/login-background.png");
+	background-size: 100%  100%;
 }
 
 .title {

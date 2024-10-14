@@ -6,7 +6,7 @@
 		size="300px"
 	>
 		<div class="setting-drawer-title">
-			<h3 class="drawer-title">主题风格设置</h3>
+			<h3 class="drawer-title">布局设置</h3>
 		</div>
 		<div class="setting-drawer-block-checbox">
 			<div

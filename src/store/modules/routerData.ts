@@ -9,12 +9,6 @@ export const DATA = {
             "redirect": "noRedirect",
             "component": "Layout",
             "alwaysShow": false,
-            "meta": {
-                "title": "全域监控",
-                "icon": "system",
-                "noCache": false,
-                "link": null
-            },
             "children": [
                 {
                     "name": "Monitoring",
@@ -23,7 +17,7 @@ export const DATA = {
                     "component": "monitoring/index",
                     "meta": {
                         "title": "全域监控",
-                        "icon": "user",
+                        "icon": "globeSolid",
                         "noCache": false,
                         "link": null
                     }
