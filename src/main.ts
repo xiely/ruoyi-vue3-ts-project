@@ -6,6 +6,7 @@ const app = createApp(App);
 import router from "@/router";
 import { createPinia } from "pinia";
 import Cookies from "js-cookie";
+import i18n from './locales'
 
 
 // TODO 这里引入hljs与注册语言是为了防止打包后缺失样式(放开javascript的注释)，开发环境不需要
@@ -161,5 +162,6 @@ app.use(router);
 app.use(plugins);
 app.use(elementIcons);
 app.use(VueCropper);
+app.use(i18n)
 
 app.mount("#app");

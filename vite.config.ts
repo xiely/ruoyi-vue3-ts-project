@@ -58,6 +58,7 @@ export default defineConfig(({ mode }) => {
 				"@utils": path.resolve("src/utils"),
 				"@router": path.resolve("src/router"),
 				"@store": path.resolve("src/store"),
+				'vue-i18n': 'vue-i18n/dist/vue-i18n.cjs.js'
 			},
 			//extensions: [".ts", ".js", ".vue", ".json", ".mjs"],
 			extensions: [".mjs", ".js", ".ts", ".jsx", ".tsx", ".json", ".vue"],

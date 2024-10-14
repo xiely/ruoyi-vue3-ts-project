@@ -1,6 +1,6 @@
 <template>
   <div class="app-container home">
-     <div>欢迎</div>
+     <div>{{ $t("欢迎") }}</div>
 	<div
           id="drive-input"
           v-if="!isDrive"
@@ -25,6 +25,7 @@
 import { driver } from 'driver.js';
 import 'driver.js/dist/driver.css';
 import { getCurrentInstance, nextTick, onBeforeMount, onBeforeUnmount, onMounted, reactive, ref, watch } from 'vue';
+
 const isDrive = ref(Boolean(sessionStorage.getItem('todo-driver')))
 
 

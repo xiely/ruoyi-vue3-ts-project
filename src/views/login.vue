@@ -1,6 +1,9 @@
 <template>
 
         <div class="login">
+			<div class="login-right-tool">
+				<ChangeLan></ChangeLan>
+			</div>
             <el-form
                 ref="loginFormRef"
                 :model="loginForm"
@@ -13,7 +16,7 @@
                         v-model="loginForm.username"
                         type="text"
                         auto-complete="off"
-                        placeholder="账号"
+                        :placeholder="$t('请输入用户名')"
                     >
                         <template #prefix>
                             <svg-icon
@@ -28,7 +31,7 @@
                         v-model="loginForm.password"
                         type="password"
                         auto-complete="off"
-                        placeholder="密码"
+                        :placeholder="$t('请输入密码')"
                         @keyup.enter="handleLogin"
                     >
                         <template #prefix>
@@ -43,7 +46,7 @@
                     <el-input
                         v-model="loginForm.code"
                         auto-complete="off"
-                        placeholder="验证码"
+                        :placeholder="$t('验证码')"
                         style="width: 55%"
                         @keyup.enter="handleLogin"
                     >
@@ -65,7 +68,7 @@
                 <el-checkbox
                     v-model="loginForm.rememberMe"
                     style="margin: 0px 0px 25px 0px"
-                    >记住密码</el-checkbox
+                    >{{ $t('记住密码') }}</el-checkbox
                 >
                 <el-form-item style="width: 100%">
                     <el-button
@@ -75,8 +78,8 @@
                         style="width: 100%"
                         @click.native="handleLogin"
                     >
-                        <span v-if="!loading">登 录</span>
-                        <span v-else>登 录 中...</span>
+                        <span v-if="!loading">{{ $t('登录') }}</span>
+                        <span v-else>{{ $t('登 录 中') }}...</span>
                     </el-button>
                 </el-form-item>
             </el-form>
@@ -87,6 +90,8 @@
 
 <script lang="ts" name="Login" setup>
 import Login from "@/api/request/login";
+import ChangeLan from '@/components/tabLang/index.vue'
+
 const {
     loginFormRef, loginForm, loginRules, codeUrl, loading, getCode, handleLogin
 } = Login();
@@ -94,6 +99,18 @@ const {
 </script>
 
 <style lang="scss" scoped>
+.login-right-tool{
+	position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px;
+    background: var(--el-color-white);
+    border: 1px solid var(--el-border-color);
+    border-radius: var(--el-border-radius-base);
+}
 .login {
 	padding-left: 80vh;
 	display: flex;
